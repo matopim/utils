@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # @pim.sk/utils
-=======
-# @matopim/utils
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 
 **Basic JavaScript utilities for browser-based applications.**  
 *Zakladne JavaScript utility pre aplikacie bezlace v prehliadaci.*
@@ -15,11 +11,7 @@ Each module is independent and can be imported separately via subpath exports.
 ## Installation / Instalacia
 
 ```bash
-<<<<<<< HEAD
 npm install @pim.sk/utils
-=======
-npm install @matopim/utils
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 
 > **Peer dependency:** `vue` is required only if you use `slots-el`.  
@@ -33,21 +25,12 @@ Import individual modules using subpath exports:
 *Importuj jednotlive moduly pomocou subpath exports:*
 
 ```javascript
-<<<<<<< HEAD
 import { sleep, to }      from '@pim.sk/utils/wait'
 import { accentMap }      from '@pim.sk/utils/strings'
 import sortAssoc          from '@pim.sk/utils/sort-assoc'
 import jsonStorage        from '@pim.sk/utils/json-storage'
 import { fulltextFilter } from '@pim.sk/utils/fulltext-filter'
 import get                from '@pim.sk/utils/get'
-=======
-import { sleep, to }      from '@matopim/utils/wait'
-import { accentMap }      from '@matopim/utils/strings'
-import sortAssoc          from '@matopim/utils/sort-assoc'
-import jsonStorage        from '@matopim/utils/json-storage'
-import { fulltextFilter } from '@matopim/utils/fulltext-filter'
-import get                from '@matopim/utils/get'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 
 ---
@@ -56,11 +39,7 @@ import get                from '@matopim/utils/get'
 
 ### `array` – Array utilities
 ```javascript
-<<<<<<< HEAD
 import { proxyToAry, objectToAry } from '@pim.sk/utils/array'
-=======
-import { proxyToAry, objectToAry } from '@matopim/utils/array'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 | Function | Description / Popis |
 |----------|---------------------|
@@ -71,11 +50,7 @@ import { proxyToAry, objectToAry } from '@matopim/utils/array'
 
 ### `array-extend` – Array prototype extensions
 ```javascript
-<<<<<<< HEAD
 import '@pim.sk/utils/array-extend'
-=======
-import '@matopim/utils/array-extend'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Extends `Array.prototype` with: `.unique`, `.duplicates`, `.sum`, `.avg`, `.get()`, `.gets()`, `.clean()`, `.delete()`, `.put()`, `.move()` and more.  
 *Rozsiruje `Array.prototype` o metody: `.unique`, `.duplicates`, `.sum`, `.avg`, `.get()`, `.gets()`, `.clean()`, `.delete()`, `.put()`, `.move()` a dalsie.*
@@ -84,11 +59,7 @@ Extends `Array.prototype` with: `.unique`, `.duplicates`, `.sum`, `.avg`, `.get(
 
 ### `boolean` – Boolean conversion
 ```javascript
-<<<<<<< HEAD
 import boolean from '@pim.sk/utils/boolean'
-=======
-import boolean from '@matopim/utils/boolean'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Converts any value to a strict `true`/`false`.  
 *Prevod lubovolnej hodnoty na striktne `true`/`false`.*
@@ -104,11 +75,7 @@ boolean(null)    // => false
 
 ### `class-url` – URL manipulation
 ```javascript
-<<<<<<< HEAD
 import classUrl from '@pim.sk/utils/class-url'
-=======
-import classUrl from '@matopim/utils/class-url'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 URL builder and parser based on the native `URL` API.  
 *Tvorba a parsovanie URL adries zalozene na nativnom `URL` API.*
@@ -123,11 +90,7 @@ curl.url  // => 'https://example.com/path?page=2'
 
 ### `date-time` – Date and time utilities
 ```javascript
-<<<<<<< HEAD
 import { toDate, now, modifyDate, durationFormat, betweenDateTime } from '@pim.sk/utils/date-time'
-=======
-import { toDate, now, modifyDate, durationFormat, betweenDateTime } from '@matopim/utils/date-time'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 | Function | Description / Popis |
 |----------|---------------------|
@@ -143,11 +106,7 @@ import { toDate, now, modifyDate, durationFormat, betweenDateTime } from '@matop
 
 ### `debounce` – Debounce utility
 ```javascript
-<<<<<<< HEAD
 import debounce from '@pim.sk/utils/debounce'
-=======
-import debounce from '@matopim/utils/debounce'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 ```javascript
 const db = debounce( myFunction, 300 )
@@ -166,11 +125,7 @@ input.addEventListener('change', db.run)    // immediate call / okamzite volanie
 
 ### `dom` – DOM utilities
 ```javascript
-<<<<<<< HEAD
 import { toDOM, zIndexMax, searchElementsAll, searchShadowsAll, getRelativeParents } from '@pim.sk/utils/dom'
-=======
-import { toDOM, zIndexMax, searchElementsAll, searchShadowsAll, getRelativeParents } from '@matopim/utils/dom'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Works through Shadow DOM.  
 *Funguje aj cez Shadow DOM.*
@@ -179,11 +134,7 @@ Works through Shadow DOM.
 
 ### `fulltext-filter` – Fulltext filtering
 ```javascript
-<<<<<<< HEAD
 import { fulltextFilter } from '@pim.sk/utils/fulltext-filter'
-=======
-import { fulltextFilter } from '@matopim/utils/fulltext-filter'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 ```javascript
 const result = fulltextFilter( items, 'search text', { fields: ['name', 'desc'] } )
@@ -196,11 +147,7 @@ const result = fulltextFilter( items, 'search text', { fields: ['name', 'desc'] 
 
 ### `get` – Fetch wrapper
 ```javascript
-<<<<<<< HEAD
 import get from '@pim.sk/utils/get'
-=======
-import get from '@matopim/utils/get'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Lightweight `fetch` wrapper with automatic JSON detection.  
 *Odlahceny obal nad `fetch` s automatickou detekciou JSON.*
@@ -215,11 +162,7 @@ const data = await get('/api/upload', formData, 'form') // multipart/form-data
 
 ### `inViewport` – Viewport detection
 ```javascript
-<<<<<<< HEAD
 import inViewport from '@pim.sk/utils/in-viewport'
-=======
-import inViewport from '@matopim/utils/in-viewport'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Detects when elements enter the visible area (viewport).  
 *Detekuje kedy element vstupuje do viditelnej casti stranky.*
@@ -232,11 +175,7 @@ new inViewport('.my-element', { onViewport: (el) => el.classList.add('visible') 
 
 ### `is` – Type checking
 ```javascript
-<<<<<<< HEAD
 import { isDate, isJson, isArray, isObject, isDOM, isNumber, isString, isFunction } from '@pim.sk/utils/is'
-=======
-import { isDate, isJson, isArray, isObject, isDOM, isNumber, isString, isFunction } from '@matopim/utils/is'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 | Function | Description / Popis |
 |----------|---------------------|
@@ -250,11 +189,7 @@ import { isDate, isJson, isArray, isObject, isDOM, isNumber, isString, isFunctio
 
 ### `json-storage` – localStorage wrapper
 ```javascript
-<<<<<<< HEAD
 import jsonStorage from '@pim.sk/utils/json-storage'
-=======
-import jsonStorage from '@matopim/utils/json-storage'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Stores and retrieves JSON objects from `localStorage`. Merges objects automatically.  
 *Uklada a nacitava JSON objekty z `localStorage`. Automaticky zlucuje objekty.*
@@ -270,11 +205,7 @@ jsonStorage.removeItem('settings')
 
 ### `json-storage-ses` – sessionStorage wrapper
 ```javascript
-<<<<<<< HEAD
 import jsonStorageSes from '@pim.sk/utils/json-storage-ses'
-=======
-import jsonStorageSes from '@matopim/utils/json-storage-ses'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Same API as `json-storage` but uses `sessionStorage`.  
 *Rovnake API ako `json-storage`, ale pouziva `sessionStorage`.*
@@ -283,11 +214,7 @@ Same API as `json-storage` but uses `sessionStorage`.
 
 ### `line` – Debug helper
 ```javascript
-<<<<<<< HEAD
 import '@pim.sk/utils/line'
-=======
-import '@matopim/utils/line'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 // Adds global __LINE__ variable
 console.log(__LINE__)  // => 'myfile.js:42'
 ```
@@ -298,11 +225,7 @@ Returns current filename and line number for debugging.
 
 ### `numbers` – Number utilities
 ```javascript
-<<<<<<< HEAD
 import { cislo, percento, percPodiel, formatBytes, ratio } from '@pim.sk/utils/numbers'
-=======
-import { cislo, percento, percPodiel, formatBytes, ratio } from '@matopim/utils/numbers'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 | Function | Description / Popis |
 |----------|---------------------|
@@ -316,11 +239,7 @@ import { cislo, percento, percPodiel, formatBytes, ratio } from '@matopim/utils/
 
 ### `parse` – Value parser
 ```javascript
-<<<<<<< HEAD
 import parse from '@pim.sk/utils/parse'
-=======
-import parse from '@matopim/utils/parse'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Converts string values to their natural JS types (number, boolean, null, ...).  
 *Prevedie retazcove hodnoty na prirodzene JS typy (cislo, boolean, null, ...).*
@@ -399,11 +318,7 @@ parse({ tel: '0905123456', active: '1', age: '25' }, 'tel', 'active')
 
 ### `position` – Element position
 ```javascript
-<<<<<<< HEAD
 import position from '@pim.sk/utils/position'
-=======
-import position from '@matopim/utils/position'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Returns element position relative to page and viewport. Works through Shadow DOM.  
 *Vrati poziciu elementu relativne k stranke a viewportu. Funguje cez Shadow DOM.*
@@ -418,11 +333,7 @@ p.topp  // distance from top of page / vzdialenost od vrchu stranky
 
 ### `recursive-compare` – Deep object comparison
 ```javascript
-<<<<<<< HEAD
 import recursiveCompare from '@pim.sk/utils/recursive-compare'
-=======
-import recursiveCompare from '@matopim/utils/recursive-compare'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Compares two objects recursively and returns changed fields.  
 *Porovnanie 2 objektov a navrat zoznam zmeneneych poli.*
@@ -439,11 +350,7 @@ const changes = recursiveCompare(
 
 ### `slots-el` – Vue slot renderer
 ```javascript
-<<<<<<< HEAD
 import slotsEl from '@pim.sk/utils/slots-el'
-=======
-import slotsEl from '@matopim/utils/slots-el'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 > **Requires:** `vue` peer dependency.  
 > *Vyzaduje: `vue` peer dependency.*
@@ -461,11 +368,7 @@ slot.node  // => [Node, ...]
 
 ### `sort-assoc` – Array sorting
 ```javascript
-<<<<<<< HEAD
 import sortAssoc from '@pim.sk/utils/sort-assoc'
-=======
-import sortAssoc from '@matopim/utils/sort-assoc'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Sorts an array of objects by one or more fields with type awareness.  
 *Triedenie pola objektov podla jedneho alebo viacerych poli s ohladom na datovy typ.*
@@ -483,11 +386,7 @@ const sorted = new sortAssoc( items, [
 
 ### `string-extend` – String prototype extensions
 ```javascript
-<<<<<<< HEAD
 import '@pim.sk/utils/string-extend'
-=======
-import '@matopim/utils/string-extend'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 Extends `String.prototype`. Use with caution in shared environments.  
 *Rozsiruje `String.prototype`. Pouzivat opatrne v zdielanom prostredi.*
@@ -496,11 +395,7 @@ Extends `String.prototype`. Use with caution in shared environments.
 
 ### `strings` – String utilities
 ```javascript
-<<<<<<< HEAD
 import { accentMap, emptyMap, compareMatch, random, basename, dirname, extname, strip_tags, shortString } from '@pim.sk/utils/strings'
-=======
-import { accentMap, emptyMap, compareMatch, random, basename, dirname, extname, strip_tags, shortString } from '@matopim/utils/strings'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 | Function | Description / Popis |
 |----------|---------------------|
@@ -515,11 +410,7 @@ import { accentMap, emptyMap, compareMatch, random, basename, dirname, extname, 
 
 ### `wait` – Async waiting utilities
 ```javascript
-<<<<<<< HEAD
 import { sleep, to } from '@pim.sk/utils/wait'
-=======
-import { sleep, to } from '@matopim/utils/wait'
->>>>>>> 464c2ae230be32cf1d4a31ff6889d08d0f5443ed
 ```
 | Function | Description / Popis |
 |----------|---------------------|
