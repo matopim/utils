@@ -1,0 +1,51 @@
+{
+  "name": "@pim.sk/utils",
+  "version": "1.0.0",
+  "description": "Basic JavaScript utilities for browser-based applications.",
+  "type": "module",
+  "license": "MIT",
+  "author": "pim.sk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matopim/utils.git"
+  },
+  "homepage": "https://github.com/matopim/utils#readme",
+  "keywords": [
+    "utils", "utilities", "javascript", "browser",
+    "sort", "debounce", "wait", "parse", "storage"
+  ],
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": { "optional": true }
+  },
+  "exports": {
+    "./array":             { "default": "./src/array.min.mjs",            "source": "./src/array.mjs" },
+    "./array-extend":      { "default": "./src/array-extend.min.js",      "source": "./src/array-extend.js" },
+    "./boolean":           { "default": "./src/boolean.min.mjs",          "source": "./src/boolean.mjs" },
+    "./class-url":         { "default": "./src/class-url.min.mjs",        "source": "./src/class-url.mjs" },
+    "./date-time":         { "default": "./src/date-time.min.mjs",        "source": "./src/date-time.mjs" },
+    "./debounce":          { "default": "./src/debounce.min.mjs",         "source": "./src/debounce.mjs" },
+    "./dom":               { "default": "./src/dom.min.mjs",              "source": "./src/dom.mjs" },
+    "./fulltext-filter":   { "default": "./src/fulltext-filter.min.mjs",  "source": "./src/fulltext-filter.mjs" },
+    "./get":               { "default": "./src/get.min.mjs",              "source": "./src/get.mjs" },
+    "./in-viewport":       { "default": "./src/inViewport.min.mjs",       "source": "./src/inViewport.mjs" },
+    "./is":                { "default": "./src/is.min.mjs",               "source": "./src/is.mjs" },
+    "./json-storage":      { "default": "./src/jsonStorage.min.mjs",      "source": "./src/jsonStorage.mjs" },
+    "./json-storage-ses":  { "default": "./src/jsonStorageSes.min.mjs",   "source": "./src/jsonStorageSes.mjs" },
+    "./line":              { "default": "./src/line.min.js",              "source": "./src/line.js" },
+    "./numbers":           { "default": "./src/numbers.min.mjs",          "source": "./src/numbers.mjs" },
+    "./parse":             { "default": "./src/parse.min.mjs",            "source": "./src/parse.mjs" },
+    "./position":          { "default": "./src/position.min.mjs",         "source": "./src/position.mjs" },
+    "./recursive-compare": { "default": "./src/recursiveCompare.min.mjs", "source": "./src/recursiveCompare.mjs" },
+    "./slots-el":          { "default": "./src/slots-el.min.js",          "source": "./src/slots-el.js" },
+    "./sort-assoc":        { "default": "./src/sortAssoc.min.mjs",        "source": "./src/sortAssoc.mjs" },
+    "./string-extend":     { "default": "./src/string-extend.min.js",     "source": "./src/string-extend.mjs" },
+    "./strings":           { "default": "./src/strings.min.mjs",          "source": "./src/strings.mjs" },
+    "./wait":              { "default": "./src/wait.min.mjs",             "source": "./src/wait.mjs" }
+  },
+  "files": [
+    "src/"
+  ]
+}

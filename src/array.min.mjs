@@ -1,0 +1,1 @@
+function objectToAry(ary){return Object.values(ary)}function proxyToAry(ary){return JSON.parse(JSON.stringify(ary))}export{objectToAry,proxyToAry};

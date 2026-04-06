@@ -1,0 +1,1 @@
+export default function(v){switch(typeof v){case"boolean":return v;case"number":return!!v;case"string":return!!new RegExp(/^true$|^1$/i).test(v);default:return!1}}
