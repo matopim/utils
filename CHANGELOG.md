@@ -1,3 +1,7 @@
+## 1.1.1 - 2026-04-27
+### Changed
+- README.md Tutorial info and url.
+
 ## 1.1.0 - 2026-04-26
 
 ### Added

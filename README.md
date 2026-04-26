@@ -8,9 +8,9 @@
 ---
 
 ## Tutorials
-
+Documentation & interactive tutorials:
 ```html
-[Documentation & interactive tutorials → www.pim.sk/api-support/@pim-sk-utils/](https://www.pim.sk/api-support/@pim-sk-utils/)
+[https://www.pim.sk/@pim-sk/utils/](https://www.pim.sk/@pim-sk/utils/)
 ```
 
 ---
@@ -38,7 +38,7 @@ No install needed. An importmap maps the `@pim.sk/utils/` prefix to a directory 
 <script type="importmap">
 {
   "imports": {
-    "@pim.sk/utils/": "https://cdn.jsdelivr.net/npm/@pim.sk/utils@1.1.0/src/"
+    "@pim.sk/utils/": "https://cdn.jsdelivr.net/npm/@pim.sk/utils@1.1.1/src/"
   }
 }
 </script>
@@ -50,7 +50,7 @@ No install needed. An importmap maps the `@pim.sk/utils/` prefix to a directory 
 </script>
 ```
 
-> Pin the version (`@1.1.0`) in production to avoid breaking changes.  
+> Pin the version (`@1.1.1`) in production to avoid breaking changes.  
 > Use `.min.mjs` / `.min.js` builds for production.
 
 The same importmap pattern works for a local directory:
