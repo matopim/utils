@@ -10,7 +10,7 @@
 
 /*
 
-  import {} from '/library/js/wait.mjs'
+  import {} from '@pim.sk/utils/wait.mjs'
 
 */
 

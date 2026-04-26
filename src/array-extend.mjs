@@ -1,4 +1,4 @@
-/** {f:'array-extend.js', v:'1.1.9', d:'2022-07-02', du:'2025-07-21'} **/
+/** {f:'array-extend.mjs', v:'1.2.1', d:'2022-07-02', du:'2026-04-22'} **/
 /*
  * rozsirenia pre prototyp ARRAY
  * -----------------------------
@@ -9,7 +9,7 @@
  * .avg
  * .numbers
  * .nonumbers
- * .suffle
+ * .shuffle
  *
  * Pole Objektov: [ {}, {}, ... ]
  *
@@ -26,15 +26,17 @@
  * .uniqueBy(key)
  * .move(from, to)
  *
- *      import '/library/js/array-extend.js'
+ *      import '@pim.sk/utils/array-extend.mjs'
  *
  *
  **/
 
 
+import '@pim.sk/utils/copy-code.mjs'
+
 // presun v ramci pola - zmena indexu
 // from (z indexu) to (na index)
-// efektivnejsie ako 2x splice
+// je to efektivnejsie ako 2x splice
 // AI: Len jeden cyklus na presun prvkov namiesto dvoch vnútorných prechodov v dvoch splice volaniach.
 if (!Array.prototype.move) {
   Object.defineProperty(Array.prototype, 'move', {
@@ -59,6 +61,12 @@ if (!Array.prototype.move) {
 }
 
 
+// uniqueBy(key) - odstrani duplicity podla zadaneho kluca, zachova POSLEDNY vyskyt
+// key : nazov vlastnosti, podla ktorej sa porovnavaju duplicity
+// priklad:
+//   const a = [ {id:1, v:"A"}, {id:2, v:"B"}, {id:1, v:"C"} ];
+//   a.uniqueBy("id");
+//   // [ {id:2, v:"B"}, {id:1, v:"C"} ]  - prvy {id:1} bol odstraneny, posledny zostal
 if (!Array.prototype.uniqueBy) {
   Object.defineProperty(Array.prototype, 'uniqueBy', {
     value: function(key) {
@@ -79,6 +87,10 @@ if (!Array.prototype.uniqueBy) {
   });
 }
 
+// Hladaj v poli prvok, kde prvok[key] === item[key] — teda porovnava hodnotu identifikacneho kluca
+// Ak najde → nahradi ho novym item cez splice
+// Ak nenajde → prida item na koniec cez push
+// items.put("id", { id: 2, name: "TWO updated" });
 if (!Array.prototype.put) {
   Object.defineProperty(Array.prototype, 'put', {
     value: function(key, item) {
@@ -96,6 +108,13 @@ if (!Array.prototype.put) {
 }
 
 
+// puts(items, tf) - hromadne vlozenie (bulk insert)
+// items : pole prvkov na vlozenie
+// tf    : true = pred vlozenim vymaze existujuce pole (replace), false = prida na koniec (append)
+// priklad:
+//   const a = [1, 2];
+//   a.puts([3, 4]);        // [1, 2, 3, 4]  - append
+//   a.puts([5, 6], true);  // [5, 6]         - replace
 if (!Array.prototype.puts) {
   Object.defineProperty(Array.prototype, 'puts', {
     value: function(items, tf = false) {
@@ -111,6 +130,15 @@ if (!Array.prototype.puts) {
 }
 
 
+// putsBy(key, items) - hromadny upsert podla kluca (bulk upsert)
+// key   : nazov vlastnosti, ktora sluzi ako identifikator (napr. "id")
+// items : pole objektov na spracovanie
+// - ak prvok s danym klucom existuje → nahradi ho (update)
+// - ak neexistuje → prida ho na koniec (insert)
+// priklad:
+//   const a = [ {id:1, v:"A"}, {id:2, v:"B"} ];
+//   a.putsBy("id", [ {id:2, v:"BB"}, {id:3, v:"C"} ]);
+//   // [ {id:1, v:"A"}, {id:2, v:"BB"}, {id:3, v:"C"} ]
 if (!Array.prototype.putsBy) {
   Object.defineProperty(Array.prototype, 'putsBy', {
     value: function(key, items) {
@@ -163,9 +191,8 @@ if (!Array.prototype.clean) {
 if (!Array.prototype.delete) {
   Object.defineProperty(Array.prototype, 'delete', {
     value: function(key, value) {
-      const idx = this.findIndex(item => item[key] === value);
-      if (idx !== -1)
-        this.splice(idx, 1);
+      for (let i = this.length - 1; i >= 0; i--)
+        if (this[i][key] === value) this.splice(i, 1);
       return this;
     },
     configurable: true,
@@ -397,6 +424,17 @@ if( Array.prototype.nonumbers === undefined )
 if( Array.prototype.shuffle === undefined )
     Object.defineProperty(Array.prototype, 'shuffle', {
         get(){
-            return this.sort(() => Math.random() - 0.5);
+            if (this.length <= 1) return [...this];
+            const orig = JSON.stringify(this);
+            const a = [...this];
+            let attempts = 0;
+            do {
+                for (let i = a.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [a[i], a[j]] = [a[j], a[i]];
+                }
+                attempts++;
+            } while (JSON.stringify(a) === orig && attempts < 10);
+            return a;
         }
     });

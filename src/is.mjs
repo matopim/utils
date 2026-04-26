@@ -1,15 +1,19 @@
-/** {f:'is.mjs', v:'1.1.5', d:'2022-09-24', du:'2025-04-10'} **/
+/** {f:'is.mjs', v:'1.1.6', d:'2022-09-24', du:'2026-04-22'} **/
 
 /*
 
-import {isDev,isDate,isDOM,isJson,isNumber,isString,isNull,isBoolean,isArray,isObject,isClass,isFunction,isNavigator} from '/library/js/is.mjs'
+import {isDev,isDate,isDOM,isJson,isNumber,isString,isNull,isUndefined,isNil,isBoolean,isArray,isObject,isClass,isFunction,isNavigator} from '@pim.sk/utils/is.mjs'
 
 
 */
 
 
 
-function isNull( v ){ return typeof v === null }
+function isNull( v )      { return v === null }
+
+function isUndefined( v ) { return typeof v === 'undefined' }
+
+function isNil( v )       { return v === null || typeof v === 'undefined' }
 
 function isBoolean( v ){ return typeof v === 'boolean' }
 
@@ -169,6 +173,8 @@ export{
   isNumber,
   isString,
   isNull,
+  isUndefined,
+  isNil,
   isArray,
   isObject,
   isClass,

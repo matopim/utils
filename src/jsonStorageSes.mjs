@@ -1,4 +1,4 @@
-/** {f:'jsonStorageSes.mjs', v:'1.1.6', d:'', du:'2026-02-05'} **/
+/** {f:'jsonStorageSes.mjs', v:'1.1.7', d:'', du:'2026-04-22'} **/
 
 // get a set na sessionStorage
 // predvolene ako JSON hodnoty
@@ -6,7 +6,7 @@
 
 /*
 
-import jsonStorageSes from '/library/js/jsonStorageSes.mjs'
+import jsonStorageSes from '@pim.sk/utils/jsonStorageSes.mjs'
 
 */
 

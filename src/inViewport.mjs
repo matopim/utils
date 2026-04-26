@@ -1,4 +1,4 @@
-/** {f:'inViewport.mjs', v:'1.1.2', d:'2022-09-15', du:'2025-05-26'} **/
+/** {f:'inViewport.mjs', v:'1.1.2', d:'2022-09-15', du:'2026-04-22'} **/
 
 /**
  * vrati / nastavi v dataset inViewport
@@ -8,11 +8,11 @@
 
 /*
 
-import inViewport from '/library/js/inViewport.mjs';
+import inViewport from '@pim.sk/utils/inViewport.mjs';
 
 */
 
-import { isDOM } from './is.mjs'
+import { isDOM } from '@pim.sk/utils/is.mjs'
 
 function inViewport( ...options ) {
   this.name = this.__proto__.constructor.name;
@@ -116,10 +116,16 @@ function inViewport( ...options ) {
 // -------------
 
 
+	let _scrollAbort = new AbortController();
+
 	let mPocuvajNaScroll = () => {
 		window.addEventListener('scroll', (event) => {
       requestAnimationFrame( ()=>{ onViewportTest(); } );
-    });
+    }, { signal: _scrollAbort.signal });
+	}
+
+	let destroy = () => {
+		_scrollAbort.abort();
 	}
 
 
@@ -257,6 +263,7 @@ function inViewport( ...options ) {
 	init();
 	return {
 		isView: testujViewportObject,
+		destroy,
 		o: this.o,
 	}
 }

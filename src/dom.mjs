@@ -1,9 +1,9 @@
-/** {f:'dom.mjs', v:'1.1.3', d:'2022-11.27', du:'2024-06-24'} **/
+/** {f:'dom.mjs', v:'1.1.4', d:'2022-11.27', du:'2026-04-22'} **/
 
 
 /*
 
-  import {toDOM,zIndexMax,searchElementsAll,searchShadowsAll,getRelativeParents} from '/library/js/dom.mjs'
+  import {toDOM,zIndexMax,searchElementsAll,searchShadowsAll,getRelativeParents} from '@pim.sk/utils/dom.mjs'
 
     toDOM
     zIndexMax

@@ -1,12 +1,12 @@
-/** {f:'parse.mjs', v:'1.1.7', d:'2023-05-07', du:'2025-05-27'} **/
+/** {f:'parse.mjs', v:'1.1.8', d:'2023-05-07', du:'2026-04-22'} **/
 
 /*
 
-import parse from '/library/js/parse.mjs';
+import parse from '@pim.sk/utils/parse.mjs';
 
 */
 
-import boolean from './boolean.mjs'
+import boolean from '@pim.sk/utils/boolean.mjs'
 
 const parse = ( inp, ignore = '', booleans = '' ) => parseInit( inp, ignore, booleans )
 

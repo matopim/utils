@@ -1,8 +1,8 @@
-/** {f:'strings.mjs', v:'1.2.1', d:'2022-10-24', du:'2025-07-02'} **/
+/** {f:'strings.mjs', v:'1.2.3', d:'2022-10-24', du:'2026-04-22'} **/
 
 /*
 
-import {} from '/library/js/strings.mjs';
+import {} from '@pim.sk/utils/strings.mjs';
 
 
 	accentMap( str, addPatterns = [ ['ß','S'] ] ) // zmeni diakritiku na zakladne znaky a-z|A-Z
@@ -60,13 +60,33 @@ function emptyMap( str, replaceStr='-' ){
 
 // vypocita % zhodu 2 stringov
 // vrati % s 2 desatinnymi miestami
+// function compareMatch( s1, s2, ...options ){
+// 	let sep = ' ', // separator
+// 	    dec = 2,   // pocet desatinnych miest
+// 	    a1 = [],
+// 	    a2 = [],      // BUG: deklarovana ale nikdy nepouzita
+// 	    zaklad = 0,
+// 	    perc = 0;
+// 	if( !s1 || !s2 )
+// 		return false;
+// 	s1 = s1.toString();
+// 	s2 = s2.toString();
+// 	for( const opt of options )
+// 		switch( typeof opt ){
+// 			case 'string': sep = opt; break;
+// 			case 'number': dec = opt; break;
+// 		}
+//
+// 	a1 = s1.split(sep);
+// 	zaklad = a1.length;
+// 	a1 = a1.filter( s => { return s2.search(s) === -1 ? false : true } ); // BUG: search() pouziva regex — specialne znaky sposobuju nespravne vysledky
+// 	perc = parseFloat((( a1.length / zaklad ) * 100).toFixed(dec));
+// 	return perc;
+// }
+
 function compareMatch( s1, s2, ...options ){
 	let sep = ' ', // separator
-	    dec = 2,   // pocet desatinnych miest
-	    a1 = [],
-	    a2 = [],
-	    zaklad = 0,
-	    perc = 0;
+	    dec = 2;   // pocet desatinnych miest
 	if( !s1 || !s2 )
 		return false;
 	s1 = s1.toString();
@@ -77,17 +97,24 @@ function compareMatch( s1, s2, ...options ){
 			case 'number': dec = opt; break;
 		}
 
-	a1 = s1.split(sep);
-	zaklad = a1.length;
-	a1 = a1.filter( s => { return s2.search(s) === -1 ? false : true } );
-	perc = parseFloat((( a1.length / zaklad ) * 100).toFixed(dec));
+	const a1    = s1.split(sep).filter(s => s !== '');
+	const zaklad = a1.length;
+	if( !zaklad ) return false;
+
+	const matched = a1.filter( s => s2.includes(s) );
+	const perc    = parseFloat((( matched.length / zaklad ) * 100).toFixed(dec));
 	return perc;
 }
 
-// odstrani v relativnej ceste lomitka pred a za (povodne globalna funkcia FuncGetCleanPath(path))
-function cleanPath(path){
+// odstrani v relativnej ceste lomitka pred a za 
+// stripRelative: odstrani prefix relativnych ciest (./, ../) — default true
+function cleanPath(path, stripRelative = true){
 	if(!path) return path;
-	path = path.replace(/\.\.\/|^\.\.\/|^\.\/|^\/\/|^\//g,'').replace(/\/\/$|\/$/,'');
+	if( stripRelative )
+		path = path.replace(/\.\.\/|^\.\/|^\/\/|^\//g, ''); // ../  ./  //  /  na zaciatku
+	else
+		path = path.replace(/^\/\/|^\//g, '');               // iba  //  /  na zaciatku
+	path = path.replace(/\/\/$|\/$/, '');                    // trailing  //  /
 	return path;
 }
 

@@ -1,8 +1,8 @@
-/** {f:'sortAssoc.mjs', v:'1.4.8', d:'2018-04-06', du:'2025-01-10'} **/
+/** {f:'sortAssoc.mjs', v:'1.5.0', d:'2018-04-06', du:'2026-04-22'} **/
 
 /*
 
-import sortAssoc from '/library/js/sortAssoc.mjs'
+import sortAssoc from '@pim.sk/utils/sortAssoc.mjs'
 
 new sortAssoc( ary, [ {field:'key', by:'asc,desc', type:String,Number,Date,Boolean , sensitive:true,false }, {...} ] )
 new sortAssoc( ary, 'key', 'asc', String )

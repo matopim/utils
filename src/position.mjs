@@ -1,9 +1,9 @@
-/** {f:'position.mjs', v:'1.1.3', d:'2023-04-06', du:'2024-06-24'} **/
+/** {f:'position.mjs', v:'1.1.4', d:'2023-04-06', du:'2026-04-22'} **/
 
 
 /*
 
-	import position from '/library/js/position.mjs'
+	import position from '@pim.sk/utils/position.mjs'
 
 
 	vrati poziciu prvku na obrazovke - prechadza aj cez shadowRoot

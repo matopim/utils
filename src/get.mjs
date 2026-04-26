@@ -1,8 +1,8 @@
-/** {f:'get.mjs', v:'1.2.0', d:'2022-08-01', du:'2024-06-24'} **/
+/** {f:'get.mjs', v:'1.2.2', d:'2022-08-01', du:'2026-04-22'} **/
 
 /*
 
-  import get from '/library/js/get.mjs'
+  import get from '@pim.sk/utils/get.mjs'
 
 */
 

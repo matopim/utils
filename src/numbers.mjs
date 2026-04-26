@@ -1,10 +1,10 @@
-/** {f:'numbers.mjs', v:'1.1.5', d:'2022-12-05', du:'2025-02-19'} **/
+/** {f:'numbers.mjs', v:'1.2.1', d:'2022-12-05', du:'2026-04-22'} **/
 
 // funkcie na pracu s cislami ~ ich uprava
 
 /*
 
-import {cislo,percento,percPodiel,formatBytes,cenaNa5Centov,cenaNa10Centov,ratio} from '/library/js/numbers.mjs'
+import {cislo,percento,percPodiel,formatBytes,cenaNa5Centov,cenaNa10Centov,ratio} from '@pim.sk/utils/numbers.mjs'
 
 */
 
@@ -29,7 +29,7 @@ function formatBytes(bytes, decimals=2) {
 
 function cislo( i, d = 3 ){ // prevedie text / alebo cislo na double s urcenym desatinnym miestom
   if( typeof i == 'string' ){
-    i = i.replace( ' ', '' ).replace( ' ', '' ).replace( ',','.' ).replace( new RegExp('[aA-zZ]|\$|€|\%|\ ','') );
+    i = i.replace( /\s/g, '' ).replace( ',', '.' ).replace( /[a-zA-Z$\u20AC%]/g, '' );
     i = parseFloat(i);
   }
   i = i.toFixed(d);

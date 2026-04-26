@@ -1,8 +1,8 @@
-/** {f:'date-time.mjs', v:'1.3.2', d:'2023-02-16', du:'2025-12-09'} **/
+/** {f:'date-time.mjs', v:'1.3.3', d:'2023-02-16', du:'2026-04-22'} **/
 
 /*
 
-	import {toDate,now,dateNow,convertSkToIso,betweenDateTime,isInTime,modifyDate,modifyTimestamp,durationFormat,firstDate,lastDate,difference,betweenMonths,timeElapsed} from '/library/js/date-time.mjs'
+	import {toDate,now,dateNow,convertSkToIso,betweenDateTime,isInTime,modifyDate,modifyTimestamp,durationFormat,firstDate,lastDate,difference,betweenMonths,timeElapsed} from '@pim.sk/utils/date-time.mjs'
 
   bezne priklady pouzitia:
   - do minut:

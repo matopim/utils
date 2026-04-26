@@ -1,4 +1,4 @@
-/** {f:'jsonStorage.mjs', v:'1.1.5', d:'', du:'2025-05-22'} **/
+/** {f:'jsonStorage.mjs', v:'1.1.6', d:'', du:'2026-04-22'} **/
 
 // get a set na localStorage
 // predvolene ako JSON hodnoty
@@ -6,7 +6,7 @@
 
 /*
 
-	import jsonStorage from '/library/js/jsonStorage.mjs'
+	import jsonStorage from '@pim.sk/utils/jsonStorage.mjs'
 
 */
 

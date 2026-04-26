@@ -1,450 +1,147 @@
 # @pim.sk/utils
 
-**Basic JavaScript utilities for browser-based applications.**  
-*Zakladne JavaScript utility pre aplikacie bezlace v prehliadaci.*
+> Basic JavaScript utility collection for browser-based applications.
 
-Each module is independent and can be imported separately via subpath exports.  
-*Kazdy modul je nezavisly a mozno ho importovat samostatne cez subpath exports.*
+[![npm](https://img.shields.io/npm/v/@pim.sk/utils)](https://www.npmjs.com/package/@pim.sk/utils)
+[![license](https://img.shields.io/npm/l/@pim.sk/utils)](https://github.com/matopim/utils/blob/main/LICENSE)
 
 ---
 
-## Installation / Instalacia
+## Tutorials
+
+```html
+[Documentation & interactive tutorials → www.pim.sk/api-support/@pim-sk-utils/](https://www.pim.sk/api-support/@pim-sk-utils/)
+```
+
+---
+
+## Installation
 
 ```bash
 npm install @pim.sk/utils
 ```
 
-> **Peer dependency:** `vue` is required only if you use `slots-el`.  
-> *`vue` je vyzadovane len pri pouziti `slots-el`.*
+Every module is a standalone ES module — import only what you need.  
+With a bundler, package exports resolve the file automatically (no extension needed):
 
----
-
-## Usage / Pouzitie
-
-Import individual modules using subpath exports:  
-*Importuj jednotlive moduly pomocou subpath exports:*
-
-```javascript
-import { sleep, to }      from '@pim.sk/utils/wait'
-import { accentMap }      from '@pim.sk/utils/strings'
-import sortAssoc          from '@pim.sk/utils/sort-assoc'
-import jsonStorage        from '@pim.sk/utils/json-storage'
-import { fulltextFilter } from '@pim.sk/utils/fulltext-filter'
-import get                from '@pim.sk/utils/get'
-```
-
----
-
-## Modules / Moduly
-
-### `array` – Array utilities
-```javascript
-import { proxyToAry, objectToAry } from '@pim.sk/utils/array'
-```
-| Function | Description / Popis |
-|----------|---------------------|
-| `proxyToAry(ary)` | Converts Vue proxy to plain JS object/array. *Prevod Vue proxy na plain JS objekt/pole.* |
-| `objectToAry(obj)` | Converts associative object to array. *Prevod asociativneho objektu na pole.* |
-
----
-
-### `array-extend` – Array prototype extensions
-```javascript
-import '@pim.sk/utils/array-extend'
-```
-Extends `Array.prototype` with: `.unique`, `.duplicates`, `.sum`, `.avg`, `.get()`, `.gets()`, `.clean()`, `.delete()`, `.put()`, `.move()` and more.  
-*Rozsiruje `Array.prototype` o metody: `.unique`, `.duplicates`, `.sum`, `.avg`, `.get()`, `.gets()`, `.clean()`, `.delete()`, `.put()`, `.move()` a dalsie.*
-
----
-
-### `boolean` – Boolean conversion
-```javascript
-import boolean from '@pim.sk/utils/boolean'
-```
-Converts any value to a strict `true`/`false`.  
-*Prevod lubovolnej hodnoty na striktne `true`/`false`.*
-
-```javascript
-boolean('true')  // => true
-boolean('1')     // => true
-boolean('false') // => false
-boolean(null)    // => false
-```
-
----
-
-### `class-url` – URL manipulation
-```javascript
-import classUrl from '@pim.sk/utils/class-url'
-```
-URL builder and parser based on the native `URL` API.  
-*Tvorba a parsovanie URL adries zalozene na nativnom `URL` API.*
-
-```javascript
-const curl = new classUrl( window.location.href )
-curl.setParam('page', 2)
-curl.url  // => 'https://example.com/path?page=2'
-```
-
----
-
-### `date-time` – Date and time utilities
-```javascript
-import { toDate, now, modifyDate, durationFormat, betweenDateTime } from '@pim.sk/utils/date-time'
-```
-| Function | Description / Popis |
-|----------|---------------------|
-| `now()` | Current datetime in local timezone. *Aktualny cas v lokalnom casovom pasme.* |
-| `toDate(d, type)` | Format date: `'date'`, `'datetime'`, `'month'`, `'time'`, `'number'`. |
-| `modifyDate(date, value, unit)` | Add/subtract time: `y m d H i s`. *Prictanie/odoctanie casu.* |
-| `durationFormat(seconds)` | Human-readable duration. *Trvanie v citatelnom formate.* |
-| `betweenDateTime(d, from, to)` | Check if date is between two dates. *Test ci je datum v rozsahu.* |
-| `difference(d1, d2)` | Difference in ms. *Rozdiel v ms.* |
-| `firstDate(d)` / `lastDate(d)` | First/last day of month. *Prvy/posledny den mesiaca.* |
-
----
-
-### `debounce` – Debounce utility
-```javascript
-import debounce from '@pim.sk/utils/debounce'
-```
-```javascript
-const db = debounce( myFunction, 300 )
-input.addEventListener('input', db.start)   // delayed call / oneskorene volanie
-input.addEventListener('change', db.run)    // immediate call / okamzite volanie
-```
-| Method | Description / Popis |
-|--------|---------------------|
-| `.start(...args)` | Start debounce timer. *Spusti casovac.* |
-| `.stop()` | Cancel. *Zrusi.* |
-| `.run(...args)` | Execute immediately. *Spusti okamzite.* |
-| `.isEnd()` | Returns `true` when finished. *Vrati `true` po ukonceni.* |
-| `.onEnd(fn)` | Callback after debounce ends. *Callback po ukonceni.* |
-
----
-
-### `dom` – DOM utilities
-```javascript
-import { toDOM, zIndexMax, searchElementsAll, searchShadowsAll, getRelativeParents } from '@pim.sk/utils/dom'
-```
-Works through Shadow DOM.  
-*Funguje aj cez Shadow DOM.*
-
----
-
-### `fulltext-filter` – Fulltext filtering
-```javascript
-import { fulltextFilter } from '@pim.sk/utils/fulltext-filter'
-```
-```javascript
-const result = fulltextFilter( items, 'search text', { fields: ['name', 'desc'] } )
-```
-- Case-insensitive, accent-insensitive (a = á, e = é, ...) by default.  
-  *Predvolene bez rozlisenia velkych/malych pismen a diakritiky.*
-- Multiple words = AND logic. *Viac slov = AND logika.*
-
----
-
-### `get` – Fetch wrapper
-```javascript
-import get from '@pim.sk/utils/get'
-```
-Lightweight `fetch` wrapper with automatic JSON detection.  
-*Odlahceny obal nad `fetch` s automatickou detekciou JSON.*
-
-```javascript
-const data = await get('/api/users', { id: 1 })         // POST + JSON
-const data = await get('/api/users', { id: 1 }, 'GET')  // GET
-const data = await get('/api/upload', formData, 'form') // multipart/form-data
-```
-
----
-
-### `inViewport` – Viewport detection
-```javascript
-import inViewport from '@pim.sk/utils/in-viewport'
-```
-Detects when elements enter the visible area (viewport).  
-*Detekuje kedy element vstupuje do viditelnej casti stranky.*
-
-```javascript
-new inViewport('.my-element', { onViewport: (el) => el.classList.add('visible') })
-```
-
----
-
-### `is` – Type checking
-```javascript
-import { isDate, isJson, isArray, isObject, isDOM, isNumber, isString, isFunction } from '@pim.sk/utils/is'
-```
-| Function | Description / Popis |
-|----------|---------------------|
-| `isDate(str)` | Checks if string is a valid ISO date. *Test ci je retazec platny datum.* |
-| `isJson(str)` / `isJson(str, 'parse')` | Test / parse JSON string. |
-| `isArray(v)` | `Array.isArray()` with try/catch. |
-| `isObject(v)` | Plain `{}` object only. *Len obyc. objekt `{}`.* |
-| `isDOM(el)` | `el instanceof Element`. |
-
----
-
-### `json-storage` – localStorage wrapper
-```javascript
-import jsonStorage from '@pim.sk/utils/json-storage'
-```
-Stores and retrieves JSON objects from `localStorage`. Merges objects automatically.  
-*Uklada a nacitava JSON objekty z `localStorage`. Automaticky zlucuje objekty.*
-
-```javascript
-jsonStorage.setItem('settings', { limit: 25, theme: 'dark' })
-jsonStorage.getItem('settings')          // => { limit: 25, theme: 'dark' }
-jsonStorage.setItem('settings', { limit: 50 })  // merge => { limit: 50, theme: 'dark' }
-jsonStorage.removeItem('settings')
-```
-
----
-
-### `json-storage-ses` – sessionStorage wrapper
-```javascript
-import jsonStorageSes from '@pim.sk/utils/json-storage-ses'
-```
-Same API as `json-storage` but uses `sessionStorage`.  
-*Rovnake API ako `json-storage`, ale pouziva `sessionStorage`.*
-
----
-
-### `line` – Debug helper
-```javascript
-import '@pim.sk/utils/line'
-// Adds global __LINE__ variable
-console.log(__LINE__)  // => 'myfile.js:42'
-```
-Returns current filename and line number for debugging.  
-*Vrati nazov suboru a cislo riadku pre debugovanie.*
-
----
-
-### `numbers` – Number utilities
-```javascript
-import { cislo, percento, percPodiel, formatBytes, ratio } from '@pim.sk/utils/numbers'
-```
-| Function | Description / Popis |
-|----------|---------------------|
-| `cislo(n, decimals)` | Rounds to N decimal places. *Zaokruhli na N desatinnych miest.* |
-| `percento(base, part)` | Calculates percentage. *Vypocet percenta.* |
-| `percPodiel(base, perc)` | Calculates percentage share. *Vypocet percentualneho podielu.* |
-| `formatBytes(bytes)` | `1048576` → `'1 MB'`. |
-| `ratio` | Class for recalculating proportional values. *Trieda pre proporcionalny prepocet cisel.* |
-
----
-
-### `parse` – Value parser
-```javascript
-import parse from '@pim.sk/utils/parse'
-```
-Converts string values to their natural JS types (number, boolean, null, ...).  
-*Prevedie retazcove hodnoty na prirodzene JS typy (cislo, boolean, null, ...).*
-
-```
-parse( input, ignore?, booleans? )
-```
-
-| Parameter | Type | Description / Popis |
-|-----------|------|---------------------|
-| `input` | any | Value, object or array to parse. *Hodnota, objekt alebo pole na parsovanie.* |
-| `ignore` | string | Comma-separated field names to skip (keep as string). *Polia ktore sa nemaju konvertovat – oddelene ciarkou.* |
-| `booleans` | string | Comma-separated field names to force as boolean. *Polia ktore sa maju konvertovat na striktne boolean.* |
-
-Recursively handles primitives, objects, arrays and **arrays of objects**.  
-*Rekurzivne spracuje primitiva, objekty, polia aj **polia objektov**.*
-
-**Basic usage / Zakladne pouzitie:**
-```javascript
-// primitives / primitiva
-parse('123')          // => 123
-parse('true')         // => true
-parse('null')         // => null
-parse('abc')          // => 'abc'
-parse('3.14')         // => 3.14
-
-// object / objekt
-parse({ a: '1', b: 'false', c: 'hello' })
-// => { a: 1, b: false, c: 'hello' }
-
-// array of objects / pole objektov
-parse([
-    { id: '1', name: 'Adam', active: 'true'  },
-    { id: '2', name: 'Eva',  active: 'false' },
-])
-// => [
-//   { id: 1, name: 'Adam', active: true  },
-//   { id: 2, name: 'Eva',  active: false },
-// ]
-
-// nested object / vnoreny objekt
-parse({ user: { id: '5', score: '9.8' } })
-// => { user: { id: 5, score: 9.8 } }
-```
-
-**`ignore` – skip specific fields / vynechat specificke polia:**  
-*Useful for fields like phone numbers, zip codes, serial numbers that look like numbers but must stay as strings.*  
-*Vhodne pre polia ako telefonne cislo, PSC, seriove cislo – vyzera ako cislo ale musi ostat string.*
-```javascript
-parse({ tel: '0905123456', age: '30' }, 'tel')
-// => { tel: '0905123456', age: 30 }
-//      ↑ kept as string    ↑ converted to number
-
-parse({ zip: '01001', code: '007', count: '5' }, 'zip,code')
-// => { zip: '01001', code: '007', count: 5 }
-```
-
-**`booleans` – force boolean conversion / vynucene boolean konvertovanie:**  
-*Useful for DB fields stored as `0`/`1` that must be treated as `true`/`false`.*  
-*Vhodne pre DB polia ulozene ako `0`/`1` ktore maju byt `true`/`false`.*
-```javascript
-parse({ active: '1', deleted: '0', name: 'John' }, '', 'active,deleted')
-// => { active: true, deleted: false, name: 'John' }
-
-parse({ is_admin: '1', score: '1' }, '', 'is_admin')
-// => { is_admin: true, score: 1 }
-```
-
-**Combined / Kombinovane:**
-```javascript
-parse({ tel: '0905123456', active: '1', age: '25' }, 'tel', 'active')
-// => { tel: '0905123456', active: true, age: 25 }
-```
-
----
-
-### `position` – Element position
-```javascript
-import position from '@pim.sk/utils/position'
-```
-Returns element position relative to page and viewport. Works through Shadow DOM.  
-*Vrati poziciu elementu relativne k stranke a viewportu. Funguje cez Shadow DOM.*
-
-```javascript
-const p = new position('#my-element')
-p.top   // distance from top of viewport / vzdialenost od vrchu viewportu
-p.topp  // distance from top of page / vzdialenost od vrchu stranky
-```
-
----
-
-### `recursive-compare` – Deep object comparison
-```javascript
-import recursiveCompare from '@pim.sk/utils/recursive-compare'
-```
-Compares two objects recursively and returns changed fields.  
-*Porovnanie 2 objektov a navrat zoznam zmeneneych poli.*
-
-```javascript
-const changes = recursiveCompare(
-  { a: 1, b: 'hello' },
-  { a: 1, b: 'world' }
-)
-// => [{ k: 'b', f: 'hello', t: 'world' }]
-```
-
----
-
-### `slots-el` – Vue slot renderer
-```javascript
-import slotsEl from '@pim.sk/utils/slots-el'
-```
-> **Requires:** `vue` peer dependency.  
-> *Vyzaduje: `vue` peer dependency.*
-
-Renders Vue slot content to HTML string or DOM nodes.  
-*Vykresli obsah Vue slotu na HTML retazec alebo DOM uzly.*
-
-```javascript
-const slot = new slotsEl( this.$slots.default() )
-slot.html  // => '<i class="fa fa-check"></i> Text'
-slot.node  // => [Node, ...]
-```
-
----
-
-### `sort-assoc` – Array sorting
-```javascript
-import sortAssoc from '@pim.sk/utils/sort-assoc'
-```
-Sorts an array of objects by one or more fields with type awareness.  
-*Triedenie pola objektov podla jedneho alebo viacerych poli s ohladom na datovy typ.*
-
-```javascript
-const sorted = new sortAssoc( items, 'name', 'asc', String )
-const sorted = new sortAssoc( items, 'price', 'desc', Number )
-const sorted = new sortAssoc( items, [
-  { field: 'category', by: 'asc', type: String },
-  { field: 'price',    by: 'desc', type: Number },
-])
-```
-
----
-
-### `string-extend` – String prototype extensions
-```javascript
-import '@pim.sk/utils/string-extend'
-```
-Extends `String.prototype`. Use with caution in shared environments.  
-*Rozsiruje `String.prototype`. Pouzivat opatrne v zdielanom prostredi.*
-
----
-
-### `strings` – String utilities
-```javascript
-import { accentMap, emptyMap, compareMatch, random, basename, dirname, extname, strip_tags, shortString } from '@pim.sk/utils/strings'
-```
-| Function | Description / Popis |
-|----------|---------------------|
-| `accentMap(str)` | Removes diacritics (á→a, č→c, ...). *Odstrani diakritiku.* |
-| `emptyMap(str, sep)` | Replaces invalid characters with separator. *Nahradi nepovolene znaky oddelovacom.* |
-| `random(n, prefix, suffix)` | Random string of N digits. *Nahodny retazec N cislic.* |
-| `strip_tags(str)` | Removes HTML tags. *Odstrani HTML tagy.* |
-| `shortString(str, n)` | Truncates to N chars. *Skrati na N znakov.* |
-| `basename/dirname/extname` | Path utilities. *Funkcie pre pracu s cestami.* |
-
----
-
-### `wait` – Async waiting utilities
-```javascript
+```js
 import { sleep, to } from '@pim.sk/utils/wait'
+import sortAssoc     from '@pim.sk/utils/sortAssoc'
+import { isNull }    from '@pim.sk/utils/is'
 ```
-| Function | Description / Popis |
-|----------|---------------------|
-| `sleep(ms)` | Async pause. *Asynchronna pauza.* `await sleep(500)` |
-| `to(condition, max?, wait?)` | Wait until condition is true. *Caka kym podmienka je `true`.* |
 
-```javascript
-await sleep(500)                                   // pause 500ms
-await to( () => typeof myVar !== 'undefined' )     // wait for variable
-await to( '#my-element' )                          // wait for DOM element
-await to( myFunction, { max: 50, wait: 20 } )      // custom timeout
+## Browser — importmap
+
+No install needed. An importmap maps the `@pim.sk/utils/` prefix to a directory — either local or CDN. The full filename including extension is required in the browser.
+
+```html
+<script type="importmap">
+{
+  "imports": {
+    "@pim.sk/utils/": "https://cdn.jsdelivr.net/npm/@pim.sk/utils@1.1.0/src/"
+  }
+}
+</script>
+
+<script type="module">
+  import { sleep, to } from '@pim.sk/utils/wait.mjs'
+  import sortAssoc     from '@pim.sk/utils/sortAssoc.mjs'
+  import '@pim.sk/utils/array-extend.mjs'  // side-effect only — no exports
+</script>
+```
+
+> Pin the version (`@1.1.0`) in production to avoid breaking changes.  
+> Use `.min.mjs` / `.min.js` builds for production.
+
+The same importmap pattern works for a local directory:
+
+```json
+"@pim.sk/utils/": "/library/js/"
+```
+
+Both resolve identically — only the source differs.
+
+
+---
+
+## Modules
+
+### Async & Network
+
+| Module | Description |
+|---|---|
+| [get](https://www.pim.sk/@pim.sk/utils/tutorial/get/) | Fetch wrapper with `async/await` support. Configurable method, output type (`json`, `text`, `object`) and data payload. |
+| [wait](https://www.pim.sk/@pim.sk/utils/tutorial/wait/) | `sleep(ms)` — async pause. `to(fn\|selector)` — polls until a condition, CSS selector or variable becomes truthy. |
+
+### Data & Type
+
+| Module | Description |
+|---|---|
+| [parse](https://www.pim.sk/@pim.sk/utils/tutorial/parse/) | Recursively converts string values in objects/arrays to native JS types. Safe number detection preserves phone numbers and leading-zero codes. |
+| [is](https://www.pim.sk/@pim.sk/utils/tutorial/is/) | Type-checking predicates: `isString`, `isNumber`, `isBoolean`, `isNull`, `isUndefined`, `isNil`, `isArray`, `isObject`, `isJson`, `isDate`, `isDOM`, `isFunction`, `isClass`. |
+| [boolean](https://www.pim.sk/@pim.sk/utils/tutorial/boolean/) | Converts loose truthy strings (`"1"`, `"yes"`, `"true"`, `"on"`) to a native boolean. |
+| [recursiveCompare](https://www.pim.sk/@pim.sk/utils/tutorial/recursiveCompare/) | Deep diff of two objects or arrays. Returns change records `{ k, f, t }` — path, from-value, to-value. |
+
+### Collections
+
+| Module | Description |
+|---|---|
+| [sortAssoc](https://www.pim.sk/@pim.sk/utils/tutorial/sortAssoc/) | Sorts an array of objects by one or more fields. Supports `String`, `Number`, `Date`, `Boolean`, `asc`/`desc` and multi-field sorting. |
+| [array-extend](https://www.pim.sk/@pim.sk/utils/tutorial/array-extend/) ⚡ | **Side-effect only** — no exports. Extends `Array.prototype` with: `.sum`, `.avg`, `.min`, `.max`, `.unique`, `.pluck`, `.sortBy` and more. Import without destructuring: `import '@pim.sk/utils/array-extend.mjs'` |
+| [fulltext-filter](https://www.pim.sk/@pim.sk/utils/tutorial/fulltext-filter/) | Client-side full-text search over an array of objects. Returns results ranked by match score. |
+
+### Strings & Numbers
+
+| Module | Description |
+|---|---|
+| [strings](https://www.pim.sk/@pim.sk/utils/tutorial/strings/) | `accentMap` (diacritics→ASCII), `emptyMap` (slugify), `compareMatch` (% word overlap), `telColapse`/`telExpand` (phone formatting), `basename`, `dirname`, `extname`, `cleanPath`, `strip_tags`, `shortString`, `random`. |
+| [numbers](https://www.pim.sk/@pim.sk/utils/tutorial/numbers/) | `cislo` (locale-aware string→number), `formatBytes`, `cenaNa5Centov` (price rounding), `ratio` (percentage of total). |
+
+### DOM & Browser
+
+| Module | Description |
+|---|---|
+| [dom](https://www.pim.sk/@pim.sk/utils/tutorial/dom/) | `toDOM(html)` — converts an HTML string to a live DOM Node. |
+| [copy-code](https://www.pim.sk/@pim.sk/utils/tutorial/copy-code/) | Clipboard helper for code snippets. Auto-init via `data-copy-code` attribute (hover button), or manual init with selector/element input. |
+| [filter-menu](https://www.pim.sk/@pim.sk/utils/tutorial/filter-menu/) | Live search/filter for navigation `<li>` lists. Auto-init via `data-filter-menu` attribute; or manual call with `{ input, selector?, items?, debounceWait? }`. |
+| [position](https://www.pim.sk/@pim.sk/utils/tutorial/position/) | Element layout: viewport coords (`top`, `left`), page coords (`topp`, `leftp`), dimensions and computed padding. |
+| [inViewport](https://www.pim.sk/@pim.sk/utils/tutorial/inViewport/) | Detects when elements enter/leave the viewport. Configurable threshold, `once` mode, callbacks, `destroy()`. |
+| [inViewportAnim](https://www.pim.sk/@pim.sk/utils/tutorial/inViewportAnim/) | Triggers Animate.css animations on viewport entry. Per-element `data-ivpa-*` overrides, lifecycle callbacks, `destroy()`. |
+
+### Storage
+
+| Module | Description |
+|---|---|
+| [jsonStorage](https://www.pim.sk/@pim.sk/utils/tutorial/jsonStorage/) | `localStorage` wrapper with automatic JSON serialisation. `setItem` supports merge mode. |
+| [jsonStorageSes](https://www.pim.sk/@pim.sk/utils/tutorial/jsonStorageSes/) | Same API as `jsonStorage`, backed by `sessionStorage` — cleared on tab close. |
+
+### Utilities
+
+| Module | Description |
+|---|---|
+| [line](https://www.pim.sk/@pim.sk/utils/tutorial/line/) | Global `__LINE__` getter — returns current source file name and line number at the call site. |
+| [debounce](https://www.pim.sk/@pim.sk/utils/tutorial/debounce/) | Delays function execution until a quiet period has passed. |
+| [class-url](https://www.pim.sk/@pim.sk/utils/tutorial/class-url/) | Parses and manipulates the current page URL — path segments, query params, hash. |
+| [date-time](https://www.pim.sk/@pim.sk/utils/tutorial/date-time/) | Date formatting and manipulation helpers with Slovak locale defaults. |
+
+### Vue 3
+
+| Module | Description |
+|---|---|
+| [slots-el](https://www.pim.sk/@pim.sk/utils/tutorial/slots-el/) | Converts Vue 3 slot VNodes to an HTML string (`.html`) or DOM Node array (`.node`). Requires Vue 3 peer dependency. |
+
+---
+
+## Peer dependencies
+
+Vue 3 is an **optional** peer dependency, required only by `slots-el`:
+
+```bash
+npm install vue@^3
 ```
 
 ---
 
-## Dependencies / Zavislosti
+## License
 
-Internal dependencies (within this package):  
-*Interne zavislosti (v ramci tohto balicka):*
-
-```
-strings  ← sortAssoc, fulltext-filter, class-url
-is       ← get, inViewport
-wait     ← debounce
-boolean  ← parse
-parse    ← string-extend
-vue      ← slots-el  (peer dependency)
-```
-
-No external runtime dependencies other than `vue` (optional peer).  
-*Ziadne externe zavislosti okrem `vue` (volitelna peer zavislost).*
-
----
-
-## License / Licencia
-
-MIT © [matopim](https://github.com/matopim)
+[MIT](https://github.com/matopim/utils/blob/main/LICENSE) © pim.sk

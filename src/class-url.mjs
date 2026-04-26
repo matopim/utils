@@ -1,4 +1,4 @@
-/** {f:'class-url.mjs', v:'2.0.6', d:'2018-12-13', du:'2026-04-06'} **/
+/** {f:'class-url.mjs', v:'2.0.8', d:'2018-12-13', du:'2026-04-22'} **/
 
 // od ver. 2.0.0 (2024-12-01) je classUrl zalozene na API URL
 // https://developer.mozilla.org/en-US/docs/Web/API/URL_API
@@ -6,7 +6,7 @@
 
 /*
 
-import classUrl from '/library/js/class-url.mjs';
+import classUrl from '@pim.sk/utils/class-url.mjs';
 
 const curl = new classUrl( my_Url_Or_Empty );
 

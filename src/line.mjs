@@ -1,10 +1,10 @@
-/** {f:'line.js', v:'1.1.2', d:'2022-01-22', du:'2024-12-17'} **/
+/** {f:'line.mjs', v:'1.1.3', d:'2022-01-22', du:'2026-04-22'} **/
 
 /*
    GLOBALNA PREMENNA __LINE__, KTORA VRATI NAZOV SUBORU a RIADOK
    priklad: console.log("poziacia:", __LINE__ );
 
-import '/library/js/line.min.js'
+import '@pim.sk/utils/line.mjs'
 
 
 */

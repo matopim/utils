@@ -1,8 +1,8 @@
-/** {f:'recursiveCompare.mjs', v:'1.1.6', d:'2022-01-22', du:'2024-06-24'} **/
+/** {f:'recursiveCompare.mjs', v:'1.1.7', d:'2022-01-22', du:'2026-04-22'} **/
 
 /*
 
-	import recursiveCompare from '/library/js/recursiveCompare.mjs'
+	import recursiveCompare from '@pim.sk/utils/recursiveCompare.mjs'
 
 */
 

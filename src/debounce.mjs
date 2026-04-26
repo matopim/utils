@@ -1,8 +1,8 @@
-/** {f:'debounce.mjs', v:'1.1.2', d:'2023-04-04', du:'2024-06-24'} **/
+/** {f:'debounce.mjs', v:'1.1.4', d:'2023-04-04', du:'2026-04-22'} **/
 
 /*
 
-	import debounce from '/library/js/debounce.mjs'
+	import debounce from '@pim.sk/utils/debounce.mjs'
 
 
 		deklaracia:

@@ -1,8 +1,8 @@
-/** {f:'boolean.mjs', v:'1.1.2', d:'2023-06-07', du:'2024-06-24'} **/
+/** {f:'boolean.mjs', v:'1.1.3', d:'2023-06-07', du:'2026-04-22'} **/
 
 /*
 
-	import boolean from '/library/js/boolean.mjs'
+	import boolean from '@pim.sk/utils/boolean.mjs'
 
 
 	boolean(true)      => true

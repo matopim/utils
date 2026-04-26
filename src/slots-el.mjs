@@ -1,4 +1,4 @@
-/** {f:'slots-el.js', v:'1.1.8', d:'2023-12-23', du:'2024-12-10'} **/
+/** {f:'slots-el.mjs', v:'1.2.0', d:'2023-12-23', du:'2026-04-22'} **/
 
 
 // Ulohou je regenerovat slot a odovzdat ho dalej ako premennu ako Node element(y)
@@ -6,7 +6,7 @@
 
 /*
 
-	import slotsEl from '/library/js/slots-el.js'
+	import slotsEl from '@pim.sk/utils/slots-el.mjs'
 
 	<div id="app">
 		<parent-component>
@@ -24,7 +24,8 @@
 
 */
 
-import { render, h } from 'vue'
+import {render,h} from '/3dp/vue3/vue.esm-browser.js'
+// import { render, h } from 'vue'
 
 class slotsEl {
 	"use strict";
