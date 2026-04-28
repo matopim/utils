@@ -1,6 +1,6 @@
 {
   "name": "@pim.sk/utils",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Basic JavaScript utilities for browser-based applications.",
   "type": "module",
   "license": "MIT",

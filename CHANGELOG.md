@@ -1,3 +1,14 @@
+## 1.1.2 - 2026-04-29
+### Changed
+- README.md correct links
+
+### Fixed
+- sortAssoc edit bug (sort date, sort sensitive)
+
+
+
+
+
 ## 1.1.1 - 2026-04-27
 ### Changed
 - README.md Tutorial info and url.
